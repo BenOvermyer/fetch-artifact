@@ -2,6 +2,12 @@
 
 Fetches a build artifact from CircleCI.
 
+Dependency: Requests
+
+```
+pip install requests
+```
+
 ## Arguments:
 
 * `-b`, `--branch` The project branch (defaults to master)
