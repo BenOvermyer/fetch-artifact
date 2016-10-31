@@ -5,6 +5,7 @@ parser.add_argument('-b', '--branch', help='Which branch to deploy (defaults to 
 parser.add_argument('-u', '--user', help='The CircleCI username to look under')
 parser.add_argument('-p', '--project', help='Which project to deploy')
 parser.add_argument('-t', '--token', help='The CircleCI API token to use')
+parser.add_argument('-v', '--vcs', help='The VCS type (defaults to github)', default='github')
 
 args = parser.parse_args()
 
@@ -12,8 +13,9 @@ branch = args.branch
 user = args.user
 project = args.project
 token = args.token
+vcs = args.vcs
 
-circleci = 'https://circleci.com/api/v1/project/' + user + '/' + project + '/latest/artifacts?circle-token=' + token + '&branch=' + branch
+circleci = 'https://circleci.com/api/v1.1/project/' + vcs + '/' + user + '/' + project + '/latest/artifacts?circle-token=' + token + '&branch=' + branch
 
 print 'Checking for latest build...'
 
